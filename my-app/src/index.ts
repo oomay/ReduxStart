@@ -1,9 +1,11 @@
 import { combineReducers} from 'redux';
+import { UserEntity } from './LogIn/model/UserEntity';
+import {  userProfileReducer } from './LogIn/reducer';
 
-// tslint:disable-next-line:no-empty-interface
 export interface IState{   
+    member: UserEntity;
 }
 
 export const reducers = combineReducers<IState>({   
-    
+    member: userProfileReducer,
 })
