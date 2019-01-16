@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { ILogInEntity } from 'src/model/LogIn';
-import { IState } from 'src/States';
+import { IState } from 'src/Reducers';
 import { AuthenticateAction, loginRequestStartedAction, updateEditingLogin } from '../actions';
 import { LogInPage } from './LogIn';
 
@@ -14,7 +14,7 @@ const mapStateToProps = (state:IState) => {
 
 const mapDispatchToProps = (dispatch:Dispatch<AuthenticateAction>) => {
   return {
-    performLogin: (logIn : ILogInEntity) => dispatch(loginRequestStartedAction(logIn))   ,
+    performLogin: (loginInfo : ILogInEntity) => dispatch(loginRequestStartedAction(loginInfo))   ,
     updateLoginInfo: (loginInfo : ILogInEntity, fieldName: string, value: any) => dispatch(updateEditingLogin(loginInfo, fieldName, value)),
  }
 }

@@ -18,40 +18,22 @@ export const sessionReducer =  (state = initialState, action:IValidateAction):IS
        
         case actionTypes.USERPROFILE_UPDATE_EDITING_LOGIN:
 
-        const newLoginInfo: ILogInEntity = {
+        const newLoginInfo = {
          ...state.loginInfo,
-         [action.fieldName]: action.value
-       };
-         
-          return {...state, loginInfo:newLoginInfo }
-       
-      //    if(action.fieldName==='login')
-      //   {
-      //    return {...state, loginInfo:{login: String(action.value), password:''} }
-      //   }
-      //   else
-      //   {
-      //   return {...state, loginInfo:{login: '', password:String(action.value)} }
-      
+         [action.fieldName]: action.value}
+
+         return {
+            ...state,
+            loginInfo: newLoginInfo
+     };
+   
      
-      }
-      
-    
-    
-      
-     
-   }
+   };       
 
       return state;
 };
 
 
-// const handlePerformLogin = (state : ISessionState, payload : ILoginResponse) => {
-//   return {...state, 
-//           isUserLoggedIn: payload.succeeded, 
-//           userProfile: payload.userProfile
-//          };  
-// }
 
 
 

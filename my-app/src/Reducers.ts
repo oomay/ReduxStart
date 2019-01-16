@@ -1,5 +1,5 @@
 import { combineReducers} from 'redux';
-import {  ISessionState, sessionReducer } from './LogIn/reducer';
+import { ISessionState, sessionReducer } from './LogIn/reducer';
 
 export interface IState{   
     sessionReducer: ISessionState

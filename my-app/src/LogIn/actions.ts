@@ -4,11 +4,10 @@ import { ILoginResponse } from 'src/model/loginResponse';
 import * as actionTypes from './actionTypes'
 
 export interface IValidateAction extends Action{
-  loginInfo?:ILogInEntity  
+  loginInfo:ILogInEntity  
   fieldName?:string, 
   value?:string
 }
-
 
   export type AuthenticateAction =   IValidateAction 
 
@@ -33,23 +32,7 @@ export const loginRequestStartedAction = (login : ILogInEntity):IValidateAction 
     loginInfo: login,
     type: actionTypes.LOAD_USER_PROFILE    
   }
-  // return function(dispatcher) {
-  //   const promise = loginApi.login(login);
-
-  //   promise.then(
-  //     data => {
-  //       dispatcher(loginRequestCompletedAction(data));
-
-  //       // This is not ideal to have it here, maybe move it to middleware?
-  //       if(data.succeeded == true) {
-  //         hashHistory.push('/student-list');
-  //       }
-  //     }
-
-  //   );
-
-  //   return promise;
-  // }
+ 
 }
 
 

@@ -3,14 +3,14 @@ import { ILogInEntity } from 'src/model/LogIn';
 import { LogInForm } from './LogInForm';
 
 interface IProps{
-  loginInfo:ILogInEntity 
-  updateLoginInfo : (loginInfo: ILogInEntity, fieldName: string, value: string) => void;
+  loginInfo:ILogInEntity;
+  updateLoginInfo: (loginInfo: ILogInEntity, fieldName: string, value: string) => void;
   performLogin: (logIn: ILogInEntity) => void;
 }
 
  export class LogInPage extends React.Component<IProps, {}> {
 
-     constructor(props:any) {
+     constructor(props:IProps) {
            super(props);        
            this.onChange = this.onChange.bind(this);
            this.onSubmit = this.onSubmit.bind(this);
@@ -32,8 +32,7 @@ interface IProps{
         }
       
       
-        private onSubmit() {
-         
+        private onSubmit() {         
           this.props.performLogin(this.props.loginInfo);
         }
     }
