@@ -21,7 +21,7 @@ export interface IValidateAction extends Action{
 
 export const updateEditingLogin = (editingLogin:ILogInEntity, fieldName:string, value:string):IValidateAction =>({
   'fieldName' : fieldName,
-  'loginInfo':editingLogin,  
+  loginInfo:editingLogin,  
   type:actionTypes.USERPROFILE_UPDATE_EDITING_LOGIN,   
   'value':value,
  

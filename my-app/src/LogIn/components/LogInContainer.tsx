@@ -8,13 +8,13 @@ import { LogInPage } from './LogIn';
 
 const mapStateToProps = (state:IState) => {
     return {
-      loginInfo: state.sessionReducer.editingLogin     
+      loginInfo: state.sessionReducer.loginInfo     
     }
 }
 
 const mapDispatchToProps = (dispatch:Dispatch<AuthenticateAction>) => {
   return {
-    performLogin: (loginInfo : ILogInEntity) => dispatch(loginRequestStartedAction(loginInfo))   ,
+    performLogin: (logIn : ILogInEntity) => dispatch(loginRequestStartedAction(logIn))   ,
     updateLoginInfo: (loginInfo : ILogInEntity, fieldName: string, value: any) => dispatch(updateEditingLogin(loginInfo, fieldName, value)),
  }
 }

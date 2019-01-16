@@ -5,7 +5,7 @@ import { LogInForm } from './LogInForm';
 interface IProps{
   loginInfo:ILogInEntity 
   updateLoginInfo : (loginInfo: ILogInEntity, fieldName: string, value: string) => void;
-  performLogin : (loginInfo : ILogInEntity) => void;
+  performLogin: (logIn: ILogInEntity) => void;
 }
 
  export class LogInPage extends React.Component<IProps, {}> {
@@ -32,7 +32,8 @@ interface IProps{
         }
       
       
-       private onSubmit() {   
-            this.props.performLogin(this.props.loginInfo);
-       }
+        private onSubmit() {
+         
+          this.props.performLogin(this.props.loginInfo);
+        }
     }
