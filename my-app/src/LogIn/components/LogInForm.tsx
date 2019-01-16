@@ -1,43 +1,42 @@
 import * as React from 'react';
 import { Button } from 'src/Common/Components/Buttons';
 import { Input } from 'src/Common/Components/Input';
-import { UserEntity } from '../model/UserEntity';
+import { ILogInEntity } from 'src/model/LogIn';
+
 
 interface IProps {
-  member: UserEntity;  
+  loginInfo:ILogInEntity;  
   onChange: (fieldName: string, value: string) => void;
-  onSave: () => void;
+  onLogIn: () => void;
 }
 
-export const MemberForm: React.StatelessComponent<IProps> = (props) => {
+export const LogInForm: React.StatelessComponent<IProps> = (props) => {
   return (
     <form>
-      <h1>Manage member</h1>
+      <h1>LogIn page</h1>
 
       <Input
         name="login"
         label="Login"
-        value={props.member.login}
+        value={props.loginInfo.login || ''}
         onChange={props.onChange}
-        error={
-          ''
-        }
         type='text'
       />
 
       <Input
         name="password"
-        label="Password"
-        value={props.member.password}
-        onChange={props.onChange}
-        type='text'
+        label="password"
+        value={props.loginInfo.password || ''}
+         onChange={props.onChange}
+         type='password'
       />
 
       <Button
-        label="Save"
+        label="LogIn"
         className="btn btn-default"
-        onClick={props.onSave}
+        onClick={props.onLogIn}
       />
     </form>
   );
 };
+

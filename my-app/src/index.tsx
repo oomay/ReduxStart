@@ -7,7 +7,7 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import AppRouter from './Router';
 
-import { reducers } from 'src';
+import { reducers } from 'src/States';
 
 const store = createStore(reducers,  composeWithDevTools());
 

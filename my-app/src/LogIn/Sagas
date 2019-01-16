@@ -1,0 +1,73 @@
+import axios from 'axios'
+import { delay } from 'redux-saga'
+import { call, put, take } from 'redux-saga/effects'
+import history from '../history';
+
+function postLogin(username: string, password: string) {
+    return new Promise((resolve, reject) => {
+        // ...XHR, fetch, axios, whatever
+        axios.post('/signin', (req:any, res:any)=> {
+           
+            if(username==='admin' && password==='admin'){
+                res.send('success');
+            }
+            else{
+              res.send('Failure');
+            }
+          })
+    });
+}
+
+function* authorize(credentials) {
+    const token = yield call(api.authorize, credentials)
+    yield put( login.success(token) )
+    return token
+  }
+  
+  function* authAndRefreshTokenOnExpiry(name, password) {
+    let token = yield call(authorize, {name, password})
+    while(true) {
+      yield call(delay, token.expires_in)
+      token = yield call(authorize, {token})
+    }
+  }
+  
+  function* watchAuth() {
+    while(true) {
+      try {
+        const {name, password} = yield take(LOGIN_REQUEST)
+  
+        yield race([
+          take(LOGOUT),
+          call(authAndRefreshTokenOnExpiry, name, password)
+        ])
+  
+        // user logged out, next while iteration will wait for the
+        // next LOGIN_REQUEST action
+  
+      } catch(error) {
+        yield put( login.error(error) )
+      }
+    }
+  }
+
+// export function* loginSaga() {
+//     while (true) {
+//         // Sleep until a login request action happens
+//         const action = yield take((v: AppAction) => v.type === "LoginRequest");
+//         const { username, password } = action.payload;
+//         try {
+//             // Login. The actual call is carried out by the middleware
+//             const result = yield call(postLogin, username, password);
+//             const { user, msg } = result;
+//             yield put(loginSuccess(user));
+//             // Wait a bit and show the message
+//             yield call(delay, 2000);         
+//             yield put(showMessage(msg));
+//             history.push('/');
+//         }
+//         catch (err) {
+//             yield put(loginFailure(err));
+//         }
+//     }
+// }

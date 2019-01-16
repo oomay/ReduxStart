@@ -1,32 +1,47 @@
-import * as actionTypes from './ActionTypes'
-import { UserEntity } from './model/UserEntity';
-class UserState  {  
-  public userProfile : UserEntity;  
+import {ILogInEntity} from '../model/LogIn';
+import { IValidateAction } from './actions';
+import * as actionTypes from './actionTypes'
 
-  public constructor() {
-      this.userProfile = new UserEntity("me");   
-  }
-} 
-  
-  export const userProfileReducer = (state = new UserState(), action:any) => {
-    // tslint:disable-next-line:no-console
-    console.log(action.payload)
-    
-    switch (action.type) {
-   
-         case actionTypes.FIELD_CHANGED:
-            return handleUserProfileAction(state, action.payload);
+export interface ISessionState {   
+   editingLogin?:ILogInEntity
+}
 
-            case actionTypes.SAVE:
-            return handleUserProfileAction(state, action.payload);
-     }  
-    return state;
-  }
+export const initialState: ISessionState = {
+   editingLogin:{
+      login:'',
+      password:'' 
+   }    
+};
 
-  const handleUserProfileAction = (state : UserState, payload:UserEntity) => {
-    const newState = {
-      ...state, 
-      userProfile: payload
-    };
-    return newState;
-  }
+export const sessionReducer =  (state = initialState, action:IValidateAction):ISessionState => {
+      switch (action.type) {
+       
+        case actionTypes.USERPROFILE_UPDATE_EDITING_LOGIN:
+       
+        if(action.fieldName==='login')
+        {
+         return {...state, editingLogin:{login: String(action.value), password:''} }
+        }
+        else
+        {
+        return {...state, editingLogin:{login: '', password:String(action.value)} }
+
+     
+      }
+   }
+
+      return state;
+};
+
+
+// const handlePerformLogin = (state : ISessionState, payload : ILoginResponse) => {
+//   return {...state, 
+//           isUserLoggedIn: payload.succeeded, 
+//           userProfile: payload.userProfile
+//          };  
+// }
+
+
+
+
+
