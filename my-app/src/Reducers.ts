@@ -1,10 +1,13 @@
 import { combineReducers} from 'redux';
-import { ISessionState, sessionReducer } from './LogIn/reducer';
+import { ISessionState, logInReducer } from './LogIn/logInReducer';
+import { IUserState, userRegistrationReducer } from './Registration/reducer';
 
-export interface IState{   
+export interface IState{  
+    userRegistrationReducer : IUserState, 
     sessionReducer: ISessionState
 }
 
 export const reducers = combineReducers<IState>({   
-   sessionReducer
+   sessionReducer: logInReducer,
+   userRegistrationReducer
 })

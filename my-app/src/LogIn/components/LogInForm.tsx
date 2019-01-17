@@ -13,11 +13,11 @@ interface IProps {
 export const LogInForm: React.StatelessComponent<IProps> = (props) => {
   return (
     <form>
-      <h1>LogIn page</h1>
+      <h3>Log into your account </h3>
 
       <Input
         name="login"
-        label="Login"
+        label="Email"
         value={props.loginInfo.login || ''}
         onChange={props.onChange}
         type='text'
@@ -25,7 +25,7 @@ export const LogInForm: React.StatelessComponent<IProps> = (props) => {
 
       <Input
         name="password"
-        label="password"
+        label="Password"
         value={props.loginInfo.password || ''}
          onChange={props.onChange}
          type='password'

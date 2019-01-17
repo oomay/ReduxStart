@@ -1,5 +1,25 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+.left {
+  width: 15%;
+}
+
+.right {
+  width: 85%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

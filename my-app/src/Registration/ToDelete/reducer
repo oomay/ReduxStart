@@ -1,0 +1,112 @@
+import * as constants from './ActionTypes';
+import { InputField } from './userEntitities';
+
+export interface IUserState {   
+        Email?:InputField,
+        FirstName?: InputField       
+}
+export const setDefaultUserState:() => IUserState = () => ({
+    Email: {
+        Name: '', 
+        Text:''       
+      }, 
+    FirstName: {
+        Name: '', 
+        Text:''                
+      },
+    }
+  )
+
+export const registrationReducer = (state= setDefaultUserState(), action:UserAction) =>{
+    switch (action.type)
+    {
+        case constants.FIELD_CHANGED:
+            return validateField(state, action.name, action.value)
+        case constants.SAVE:
+            // tslint:disable-next-line:no-console
+            console.log(action.user)
+        
+        default: return state
+    }
+}
+
+const validateField = (state: IUserState, name:string, value:string) => {  
+    // tslint:disable-next-line:no-console
+    console.log(name)
+};
+
+
+import {RegisterAction} from '../actions'
+import * as constants from '../ActionTypes';
+import { IUser } from '../userEntitities';
+
+export interface IUserState {   
+       user:IUser
+       error:string   
+}
+
+export const initialState: IUserState = {
+    error:'',
+    user:{
+        email:'',
+        firstname:'',
+        id:0,
+        lastname:''  
+    }    
+  };
+// export const setDefaultUserState:() => IUserState = () => ({
+//     Email: {
+//         Name: '', 
+//         Text:''       
+//       }, 
+//     FirstName: {
+//         Name: '', 
+//         Text:''                
+//       },
+//     }
+//   )
+
+export const userRegistrationReducer = (state= initialState, action:RegisterAction):IUserState =>{
+    switch (action.type)
+    {
+        // case constants.FIELD_CHANGED:
+        // {
+        //    // return validateField(state, action.name, action.value)
+        // }
+        case constants.SAVE:
+        {
+           return {
+               ...state, user:action.user, message: ''
+           }
+        }
+        default: return state
+    }
+}
+
+// const validateField = (state: IUserState, name:string, value:string) => {  
+//  switch(name)
+//    {
+//        case 'Name':
+//         if(value===''){  
+            
+//             return {
+//                 ...state,                
+//                user:{FirstName:{ErrorMessage:'Invalid name', Label:'Name *',Name:state.user.FirstName!.Name, Text:state.user.FirstName!.Text}}
+//             }
+//         }
+//         case 'Email':
+        //  if (!value.includes("@"))
+        //  {
+        //      // tslint:disable-next-line:no-console
+        //      console.log("email")
+        //          return{
+        //              ...state, name, value                 
+        //          }
+        //  }
+//     default:
+    // return {
+    //     ...state
+    // }
+
+
+  };

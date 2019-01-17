@@ -1,0 +1,32 @@
+import { IRegistrationFieldChangePayloadAction } from './actions';
+import * as constants from './ActionTypes';
+import { IUserState } from './userEntitities';
+
+export const initialState: IUserState = {
+    message:'',
+    user:{
+     email:'',
+     firstname:'',
+     id:0,
+     lastname:'',
+     password:''     
+    }   
+};
+
+const handleUpdateField = (state: IUserState, payload: IRegistrationFieldChangePayloadAction): IUserState => {
+    return {
+      ...state
+    };
+  };
+
+  export const RegistrationReducer = (state= initialState, action:IRegistrationFieldChangePayloadAction) =>{
+    switch (action.type)
+    {
+        case constants.UPDATE_FIELD:
+            return handleUpdateField(state, action.value);
+    }
+    return state
+}
+
+
+  

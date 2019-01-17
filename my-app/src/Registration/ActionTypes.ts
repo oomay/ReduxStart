@@ -1,0 +1,11 @@
+export const FIELD_CHANGED = 'FIELD_CHANGED';
+export type FIELD_CHANGED = typeof FIELD_CHANGED;
+
+export const SAVE = 'SAVE';
+export type SAVE = typeof SAVE;
+
+export const REGISTER_FAILURE = 'REGISTER_FAILURE';
+export type REGISTER_FAILURE = typeof REGISTER_FAILURE;
+
+export const REGISTER_SUCCESSFUL = 'REGISTER_SUCCESSFUL';
+export type REGISTER_SUCCESSFUL = typeof REGISTER_SUCCESSFUL;

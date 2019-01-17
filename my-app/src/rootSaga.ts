@@ -1,10 +1,8 @@
 import { all, fork} from 'redux-saga/effects';
+import registrationSaga from './Registration/registrationsaga';
 
-
-
-// Register all your watchers
 export default function* root() {
     yield all([
-        fork(),
+        fork(registrationSaga),
     ])
 }
